@@ -1,8 +1,8 @@
-import React from 'react'
-import Head from 'next/head'
+import React from 'react';
+import Head from 'next/head';
 
-import Header from '../components/header'
-import Footer from '../components/footer'
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 const Top = (props: any) => {
   return (
@@ -28,7 +28,7 @@ const Top = (props: any) => {
         `}
       </style>
     </>
-  )
-}
+  );
+};
 
-export default Top
+export default Top;

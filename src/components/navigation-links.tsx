@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 const NavigationLinks = (props: any) => {
   return (
     <>
-      <nav className={`navigation-links-nav ${props: any.rootClassName} `}>
-        <span className="navigation-links-text">{props: any.text}</span>
-        <span className="navigation-links-text1">{props: any.text1}</span>
-        <span className="navigation-links-text2">{props: any.text2}</span>
-        <span className="navigation-links-text3">{props: any.text3}</span>
-        <span className="navigation-links-text4">{props: any.text4}</span>
+      <nav className={`navigation-links-nav ${props.rootClassName} `}>
+        <span className="navigation-links-text">{props.text}</span>
+        <span className="navigation-links-text1">{props.text1}</span>
+        <span className="navigation-links-text2">{props.text2}</span>
+        <span className="navigation-links-text3">{props.text3}</span>
+        <span className="navigation-links-text4">{props.text4}</span>
       </nav>
       <style jsx>
         {`
@@ -61,8 +61,8 @@ const NavigationLinks = (props: any) => {
         `}
       </style>
     </>
-  )
-}
+  );
+};
 
 NavigationLinks.defaultProps = {
   text: 'About',
@@ -71,7 +71,7 @@ NavigationLinks.defaultProps = {
   text2: 'Pricing',
   text3: 'Team',
   text4: 'Blog',
-}
+};
 
 NavigationLinks.propTypes = {
   text: PropTypes.string,
@@ -80,6 +80,6 @@ NavigationLinks.propTypes = {
   text2: PropTypes.string,
   text3: PropTypes.string,
   text4: PropTypes.string,
-}
+};
 
-export default NavigationLinks
+export default NavigationLinks;

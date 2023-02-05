@@ -1,9 +1,9 @@
-import React from 'react'
-import Head from 'next/head'
+import React from 'react';
+import Head from 'next/head';
 
-import Header from '../components/header'
-import GalleryCard from '../components/gallery-card'
-import Footer from '../components/footer'
+import Header from '../components/header';
+import GalleryCard from '../components/gallery-card';
+import Footer from '../components/footer';
 
 const Personal = (props: any) => {
   return (
@@ -206,7 +206,7 @@ const Personal = (props: any) => {
         `}
       </style>
     </>
-  )
-}
+  );
+};
 
-export default Personal
+export default Personal;

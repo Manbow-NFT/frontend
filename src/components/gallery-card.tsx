@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 const GalleryCard = (props: any) => {
   return (
     <>
-      <div className={`gallery-card-gallery-card ${props: any.rootClassName} `}>
+      <div className={`gallery-card-gallery-card ${props.rootClassName} `}>
         <img
-          alt={props: any.image_alt}
-          src={props: any.image_src}
+          alt={props.image_alt}
+          src={props.image_src}
           className="gallery-card-image"
         />
       </div>
@@ -103,19 +103,19 @@ const GalleryCard = (props: any) => {
         `}
       </style>
     </>
-  )
-}
+  );
+};
 
 GalleryCard.defaultProps = {
   image_alt: 'image',
   rootClassName: '',
   image_src: '/playground_assets/sunfish-1500w.jpg',
-}
+};
 
 GalleryCard.propTypes = {
   image_alt: PropTypes.string,
   rootClassName: PropTypes.string,
   image_src: PropTypes.string,
-}
+};
 
-export default GalleryCard
+export default GalleryCard;

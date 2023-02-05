@@ -1,27 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-import NavigationLinks from './navigation-links'
+import NavigationLinks from './navigation-links';
 
 const Header = (props: any) => {
   return (
     <>
       <header
         data-role="Header"
-        className={`header-header ${props: any.rootClassName} `}
+        className={`header-header ${props.rootClassName} `}
       >
         <img
-          alt={props: any.image_alt}
-          src={props: any.image_src}
+          alt={props.image_alt}
+          src={props.image_src}
           className="header-image"
         />
         <div className="header-nav">
           <NavigationLinks rootClassName="rootClassName10"></NavigationLinks>
         </div>
         <div className="header-btn-group">
-          <button className="header-login button">{props: any.Login}</button>
-          <button className="button">{props: any.Register}</button>
+          <button className="header-login button">{props.Login}</button>
+          <button className="button">{props.Register}</button>
         </div>
         <div data-role="BurgerMenu" className="header-burger-menu">
           <svg viewBox="0 0 1024 1024" className="header-icon">
@@ -32,8 +32,8 @@ const Header = (props: any) => {
           <div className="header-nav1">
             <div className="header-container">
               <img
-                alt={props: any.image_alt1}
-                src={props: any.image_src1}
+                alt={props.image_alt1}
+                src={props.image_src1}
                 className="header-image1"
               />
               <div data-role="CloseMobileMenu" className="header-menu-close">
@@ -176,8 +176,8 @@ const Header = (props: any) => {
         `}
       </style>
     </>
-  )
-}
+  );
+};
 
 Header.defaultProps = {
   image_src: 'https://presentation-website-assets.teleporthq.io/logos/logo.png',
@@ -188,7 +188,7 @@ Header.defaultProps = {
   image_alt1: 'image',
   Register: 'Register',
   image_alt: 'logo',
-}
+};
 
 Header.propTypes = {
   image_src: PropTypes.string,
@@ -198,6 +198,6 @@ Header.propTypes = {
   image_alt1: PropTypes.string,
   Register: PropTypes.string,
   image_alt: PropTypes.string,
-}
+};
 
-export default Header
+export default Header;
