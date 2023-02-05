@@ -1,15 +1,18 @@
 import type { AppProps } from "next/app";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
-import "../styles/globals.css";
+import "../styles/style.css";
+import { ChakraProvider } from "@chakra-ui/react";
 
 // This is the chainId your dApp will work on.
-const activeChainId = ChainId.Mainnet;
+const activeChainId = ChainId.Goerli;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider desiredChainId={activeChainId}>
-      <Component {...pageProps} />
-    </ThirdwebProvider>
+    <ChakraProvider>
+      <ThirdwebProvider desiredChainId={activeChainId}>
+        <Component {...pageProps} />
+      </ThirdwebProvider>
+    </ChakraProvider>
   );
 }
 

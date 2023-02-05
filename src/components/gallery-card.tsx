@@ -2,13 +2,13 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
-const GalleryCard = (props) => {
+const GalleryCard = (props: any) => {
   return (
     <>
-      <div className={`gallery-card-gallery-card ${props.rootClassName} `}>
+      <div className={`gallery-card-gallery-card ${props: any.rootClassName} `}>
         <img
-          alt={props.image_alt}
-          src={props.image_src}
+          alt={props: any.image_alt}
+          src={props: any.image_src}
           className="gallery-card-image"
         />
       </div>

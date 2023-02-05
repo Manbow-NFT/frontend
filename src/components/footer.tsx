@@ -2,16 +2,16 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
-const Footer = (props) => {
+const Footer = (props: any) => {
   return (
     <>
-      <footer className={`footer-footer ${props.rootClassName} `}>
+      <footer className={`footer-footer ${props: any.rootClassName} `}>
         <img
-          alt={props.image_alt}
-          src={props.image_src}
+          alt={props: any.image_alt}
+          src={props: any.image_src}
           className="footer-image"
         />
-        <span className="footer-text">{props.text}</span>
+        <span className="footer-text">{props: any.text}</span>
         <div className="footer-icon-group">
           <svg viewBox="0 0 950.8571428571428 1024" className="footer-icon">
             <path d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"></path>
@@ -24,71 +24,6 @@ const Footer = (props) => {
           </svg>
         </div>
       </footer>
-      <style jsx>
-        {`
-          .footer-footer {
-            width: 100%;
-            display: flex;
-            position: relative;
-            align-items: center;
-            padding-top: var(--dl-space-space-twounits);
-            padding-left: var(--dl-space-space-threeunits);
-            padding-right: var(--dl-space-space-threeunits);
-            padding-bottom: var(--dl-space-space-twounits);
-            justify-content: space-between;
-          }
-          .footer-image {
-            height: 2rem;
-            object-fit: cover;
-          }
-          .footer-icon-group {
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            justify-content: space-between;
-          }
-          .footer-icon {
-            width: var(--dl-size-size-xsmall);
-            height: var(--dl-size-size-xsmall);
-            margin-right: var(--dl-space-space-twounits);
-          }
-          .footer-icon2 {
-            width: var(--dl-size-size-xsmall);
-            height: var(--dl-size-size-xsmall);
-            margin-right: var(--dl-space-space-twounits);
-          }
-          .footer-icon4 {
-            width: var(--dl-size-size-xsmall);
-            height: var(--dl-size-size-xsmall);
-          }
-
-          @media (max-width: 767px) {
-            .footer-footer {
-              padding-left: var(--dl-space-space-twounits);
-              padding-right: var(--dl-space-space-twounits);
-            }
-            .footer-text {
-              text-align: center;
-              margin-left: var(--dl-space-space-unit);
-              margin-right: var(--dl-space-space-unit);
-            }
-          }
-          @media (max-width: 479px) {
-            .footer-footer {
-              padding: var(--dl-space-space-unit);
-              flex-direction: column;
-            }
-            .footer-image {
-              margin-bottom: var(--dl-space-space-unit);
-            }
-            .footer-text {
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-bottom: var(--dl-space-space-unit);
-            }
-          }
-        `}
-      </style>
     </>
   )
 }

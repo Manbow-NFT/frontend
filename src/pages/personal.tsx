@@ -5,7 +5,7 @@ import Header from '../components/header'
 import GalleryCard from '../components/gallery-card'
 import Footer from '../components/footer'
 
-const Personal = (props) => {
+const Personal = (props: any) => {
   return (
     <>
       <div className="personal-container">

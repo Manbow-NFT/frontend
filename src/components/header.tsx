@@ -4,24 +4,24 @@ import PropTypes from 'prop-types'
 
 import NavigationLinks from './navigation-links'
 
-const Header = (props) => {
+const Header = (props: any) => {
   return (
     <>
       <header
         data-role="Header"
-        className={`header-header ${props.rootClassName} `}
+        className={`header-header ${props: any.rootClassName} `}
       >
         <img
-          alt={props.image_alt}
-          src={props.image_src}
+          alt={props: any.image_alt}
+          src={props: any.image_src}
           className="header-image"
         />
         <div className="header-nav">
           <NavigationLinks rootClassName="rootClassName10"></NavigationLinks>
         </div>
         <div className="header-btn-group">
-          <button className="header-login button">{props.Login}</button>
-          <button className="button">{props.Register}</button>
+          <button className="header-login button">{props: any.Login}</button>
+          <button className="button">{props: any.Register}</button>
         </div>
         <div data-role="BurgerMenu" className="header-burger-menu">
           <svg viewBox="0 0 1024 1024" className="header-icon">
@@ -32,8 +32,8 @@ const Header = (props) => {
           <div className="header-nav1">
             <div className="header-container">
               <img
-                alt={props.image_alt1}
-                src={props.image_src1}
+                alt={props: any.image_alt1}
+                src={props: any.image_src1}
                 className="header-image1"
               />
               <div data-role="CloseMobileMenu" className="header-menu-close">
