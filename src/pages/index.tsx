@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import Header from '../components/header';
+import NavBar from '../components/nav-bar';
 import Footer from '../components/footer';
 
 const Top = (props: any) => {
@@ -9,10 +9,10 @@ const Top = (props: any) => {
     <>
       <div className="top-container">
         <Head>
-          <title>Acrobatic Only Gerbil</title>
-          <meta property="og:title" content="Acrobatic Only Gerbil" />
+          <title>manbow-frontend-teleporthq</title>
+          <meta property="og:title" content="manbow-frontend-teleporthq" />
         </Head>
-        <Header rootClassName="header-root-class-name1"></Header>
+        <NavBar rootClassName="nav-bar-root-class-name1"></NavBar>
         <Footer rootClassName="footer-root-class-name1"></Footer>
       </div>
       <style jsx>

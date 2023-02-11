@@ -109,7 +109,8 @@ const GalleryCard = (props: any) => {
 GalleryCard.defaultProps = {
   image_alt: 'image',
   rootClassName: '',
-  image_src: '/playground_assets/sunfish-1500w.jpg',
+  image_src:
+    'https://images.unsplash.com/photo-1513040260736-63dd0617fb66?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE0fHxmaXNofGVufDB8fHx8MTY3NTU5MDE0NQ&ixlib=rb-4.0.3&w=1500',
 };
 
 GalleryCard.propTypes = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import Header from '../components/header';
+import NavBar from '../components/nav-bar';
 import GalleryCard from '../components/gallery-card';
 import Footer from '../components/footer';
 
@@ -10,36 +10,38 @@ const Personal = (props: any) => {
     <>
       <div className="personal-container">
         <Head>
-          <title>Personal - Acrobatic Only Gerbil</title>
+          <title>Personal - manbow-frontend-teleporthq</title>
           <meta
             property="og:title"
-            content="Personal - Acrobatic Only Gerbil"
+            content="Personal - manbow-frontend-teleporthq"
           />
         </Head>
-        <Header rootClassName="header-root-class-name"></Header>
+        <NavBar rootClassName="nav-bar-root-class-name"></NavBar>
         <div className="personal-body">
           <div className="personal-container1">
-            <h1 className="personal-text">banri.eth &apos;s Sunfish</h1>
+            <h2 className="personal-text Heading">banri.eth &apos;s Sunfish</h2>
             <div className="personal-container2">
-              <button className="personal-button button">Merge</button>
+              <button className="personal-merge-button button">
+                <span className="personal-text01 Content">Merge</span>
+              </button>
             </div>
             <div className="personal-container3">
-              <button className="personal-button1 button">
-                <span>
-                  <span className="personal-text02">All</span>
+              <button className="personal-button button">
+                <span className="Content">
+                  <span className="personal-text03">All</span>
                   <span> 32</span>
                 </span>
               </button>
-              <button className="personal-button2 button">
-                <span className="personal-text04">
-                  <span className="personal-text05">Alive</span>
+              <button className="personal-button1 button">
+                <span className="personal-text05 Content">
+                  <span className="personal-text06">Alive</span>
                   <span> 30</span>
                   <br></br>
                 </span>
               </button>
-              <button className="personal-button3 button">
-                <span className="personal-text08">
-                  <span className="personal-text09">Die</span>
+              <button className="personal-button2 button">
+                <span className="personal-text09 Content">
+                  <span className="personal-text10">Die</span>
                   <span> 2</span>
                   <br></br>
                 </span>
@@ -114,19 +116,24 @@ const Personal = (props: any) => {
             flex-direction: row;
             justify-content: flex-end;
           }
-          .personal-button {
+          .personal-merge-button {
             color: var(--dl-color-gray-white);
-            font-size: 16px;
-            align-self: flex-end;
-            font-style: normal;
-            font-weight: 500;
+            height: 50px;
+            display: flex;
+            min-width: 128px;
+            align-self: center;
+            text-align: center;
+            line-height: 1.5;
             margin-left: var(--dl-space-space-unit);
             border-width: 0px;
             margin-right: var(--dl-space-space-unit);
-            padding-left: 1.5rem;
             border-radius: var(--dl-radius-radius-radius8);
-            padding-right: 1.5rem;
+            flex-direction: row;
+            justify-content: center;
             background-color: var(--dl-color-primary-300);
+          }
+          .personal-text01 {
+            align-self: center;
           }
           .personal-container3 {
             width: 100%;
@@ -141,7 +148,7 @@ const Personal = (props: any) => {
             border-left-width: 0px;
             border-right-width: 0px;
           }
-          .personal-button1 {
+          .personal-button {
             font-weight: 400;
             border-width: 1px;
             margin-right: var(--dl-space-space-unit);
@@ -151,7 +158,20 @@ const Personal = (props: any) => {
             border-right-width: 0px;
             border-bottom-width: 2.5px;
           }
-          .personal-text02 {
+          .personal-text03 {
+            font-style: normal;
+            font-weight: 600;
+          }
+          .personal-button1 {
+            font-weight: 400;
+            border-width: 0px;
+            margin-right: var(--dl-space-space-unit);
+            border-radius: 0px;
+          }
+          .personal-text05 {
+            color: var(--dl-color-gray-500);
+          }
+          .personal-text06 {
             font-style: normal;
             font-weight: 600;
           }
@@ -161,23 +181,10 @@ const Personal = (props: any) => {
             margin-right: var(--dl-space-space-unit);
             border-radius: 0px;
           }
-          .personal-text04 {
-            color: var(--dl-color-gray-500);
-          }
-          .personal-text05 {
-            font-style: normal;
-            font-weight: 600;
-          }
-          .personal-button3 {
-            font-weight: 400;
-            border-width: 0px;
-            margin-right: var(--dl-space-space-unit);
-            border-radius: 0px;
-          }
-          .personal-text08 {
-            color: var(--dl-color-gray-500);
-          }
           .personal-text09 {
+            color: var(--dl-color-gray-500);
+          }
+          .personal-text10 {
             font-style: normal;
             font-weight: 600;
           }
