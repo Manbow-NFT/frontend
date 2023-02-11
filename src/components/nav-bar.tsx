@@ -4,7 +4,6 @@ import {
   Header,
   Container,
   Group,
-  Image,
   Burger,
   Paper,
   Transition,
@@ -92,11 +91,17 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface HeaderResponsiveProps {
-  links: { link: string; label: string }[];
-}
-
-export function NavBar({ links }: HeaderResponsiveProps) {
+export default function NavBar() {
+  const links = [
+    {
+      link: 'https://opensea.io/collection/fishtanknft',
+      label: 'OpenSea',
+    },
+    {
+      link: 'https://etherscan.io/address/0x2d0da0ff93b0ba6055a03aa03dfbbd9d1c3b88d4',
+      label: 'Etherscan',
+    },
+  ];
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
