@@ -5,12 +5,4 @@ module.exports = {
   parser: 'typescript',
   singleQuote: true,
   jsxSingleQuote: false,
-  overrides: [
-    {
-      files: ['*.js', '*.jsx'],
-      options: {
-        semi: false,
-      },
-    },
-  ],
 }

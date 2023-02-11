@@ -1,4 +1,3 @@
-import { ChakraProvider } from '@chakra-ui/react';
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 import type { AppProps } from 'next/app';
 import '../styles/style.css';
@@ -8,11 +7,9 @@ const activeChainId = ChainId.Goerli;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
-      <ThirdwebProvider desiredChainId={activeChainId}>
-        <Component {...pageProps} />
-      </ThirdwebProvider>
-    </ChakraProvider>
+    <ThirdwebProvider desiredChainId={activeChainId}>
+      <Component {...pageProps} />
+    </ThirdwebProvider>
   );
 }
 
