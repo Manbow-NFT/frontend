@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import NavBar from '../components/nav-bar';
+import { NavBar } from '../components/nav-bar';
 import Footer from '../components/footer';
 
 const Top = (props: any) => {
@@ -12,21 +12,16 @@ const Top = (props: any) => {
           <title>manbow-frontend-teleporthq</title>
           <meta property="og:title" content="manbow-frontend-teleporthq" />
         </Head>
-        <NavBar rootClassName="nav-bar-root-class-name1"></NavBar>
+        <NavBar
+          links={[
+            {
+              link: 'https://en.wikipedia.org/wiki/Ocean_sunfish',
+              label: 'Wikipedia',
+            },
+          ]}
+        />
         <Footer rootClassName="footer-root-class-name1"></Footer>
       </div>
-      <style jsx>
-        {`
-          .top-container {
-            width: 100%;
-            display: flex;
-            overflow: auto;
-            min-height: 100vh;
-            align-items: center;
-            flex-direction: column;
-          }
-        `}
-      </style>
     </>
   );
 };

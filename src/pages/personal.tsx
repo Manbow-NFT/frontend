@@ -16,7 +16,7 @@ const Personal = (props: any) => {
             content="Personal - manbow-frontend-teleporthq"
           />
         </Head>
-        <NavBar rootClassName="nav-bar-root-class-name"></NavBar>
+        <NavBar></NavBar>
         <div className="personal-body">
           <div className="personal-container1">
             <h2 className="personal-text Heading">banri.eth &apos;s Sunfish</h2>
