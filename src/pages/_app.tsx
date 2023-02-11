@@ -1,3 +1,4 @@
+import { MantineProvider } from '@mantine/core';
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 import type { AppProps } from 'next/app';
 import '../styles/style.css';
@@ -7,9 +8,18 @@ const activeChainId = ChainId.Goerli;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider desiredChainId={activeChainId}>
-      <Component {...pageProps} />
-    </ThirdwebProvider>
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        // fontFamily: 'Inter',
+        colorScheme: 'light',
+      }}
+    >
+      <ThirdwebProvider desiredChainId={activeChainId}>
+        <Component {...pageProps} />
+      </ThirdwebProvider>
+    </MantineProvider>
   );
 }
 
