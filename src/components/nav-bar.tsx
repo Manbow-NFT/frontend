@@ -9,6 +9,7 @@ import {
   Transition,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { ConnectWallet } from '@thirdweb-dev/react';
 
 const HEADER_HEIGHT = 60;
 
@@ -148,6 +149,7 @@ export default function NavBar() {
             </Paper>
           )}
         </Transition>
+        <ConnectWallet />
       </Container>
     </Header>
   );
