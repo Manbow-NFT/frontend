@@ -84,7 +84,13 @@ const claimButton = () => {
   })();
 
   return (
-    <Flex>
+    <Flex
+      direction="row"
+      align="center"
+      justify="center"
+      wrap="nowrap"
+      gap="md"
+    >
       <NumberInput
         value={quantity}
         onChange={(value) => (value ? setQuantity(value) : setQuantity(1))}
