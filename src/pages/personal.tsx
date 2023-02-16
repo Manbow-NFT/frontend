@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 
 import NavBar from '../components/navBar';
-import GalleryCard from '../components/galleryCard';
+import Gallery from '../components/gallery';
 import Footer from '../components/footer';
 import { Container } from '@mantine/core';
 
@@ -13,10 +13,11 @@ const Personal = (props: any) => {
         <title>Personal - manbow-frontend</title>
         <meta property="og:title" content="Personal - manbow-frontend" />
       </Head>
-      <NavBar />
-      <Container size="md" px={10}></Container>
-      <GalleryCard />
-      <Footer />
+      <Container>
+        <NavBar />
+        <Gallery />
+        <Footer />
+      </Container>
     </div>
   );
 };
