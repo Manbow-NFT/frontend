@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import NavBar from '../components/nav-bar';
+import NavBar from '../components/navBar';
 import Footer from '../components/footer';
 import { Container } from '@mantine/core';
 import ClaimButton from '../components/claimButton';
@@ -10,8 +10,12 @@ const Top: React.FC = () => {
   return (
     <div className="top-container">
       <Head>
-        <title>manbow-frontend</title>
-        <meta property="og:title" content="manbow-frontend" />
+        <title>Manbow NFT</title>
+        <meta property="description" content="Manbow is an NFT that ..." />
+        <meta property="og:title" content="Manbow NFT" />
+        <meta property="og:site_name" content="Manbow NFT" />
+        <meta property="og:description" content="Manbow is an NFT that ..." />
+        <meta property="og:type" content="website" />
       </Head>
       <NavBar />
       <Container size="md" px={10}>

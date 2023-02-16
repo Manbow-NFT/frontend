@@ -1,3 +1,1 @@
-import { ChainId } from '@thirdweb-dev/react';
-
-export const CHAIN_ID = ChainId.Goerli;
+export const CHAIN_ID = Number(process.env.CHAIN_ID);
