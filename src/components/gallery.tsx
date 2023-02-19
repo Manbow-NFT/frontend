@@ -1,7 +1,28 @@
 import React from 'react';
-import { Box, Image, SimpleGrid, Tabs } from '@mantine/core';
+import { Box, Card, Image, SimpleGrid, Tabs } from '@mantine/core';
+import { useAddress, useContract, useOwnedNFTs } from '@thirdweb-dev/react';
+
+interface nftItem {
+  tokenId: number;
+}
 
 const Gallery = () => {
+  const { contract } = useContract(
+    '0xE4B86B6f3eb2E660b0799c04Ce300419Fa859036',
+    'edition-drop'
+  );
+  const address = useAddress();
+  const { data: ownedNFTs } = useOwnedNFTs(contract, address);
+  console.log(ownedNFTs);
+  const nftItems: nftItem[] = [];
+  ownedNFTs?.map((ownedNft, idx) => {
+    if (ownedNft.quantityOwned != null) {
+      for (let i = 0; i < ownedNft.quantityOwned; i++) {
+        nftItems.push({ tokenId: idx });
+      }
+    }
+  });
+
   return (
     <Box
       sx={{
@@ -26,72 +47,15 @@ const Gallery = () => {
               { maxWidth: 'xs', cols: 4 },
             ]}
           >
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
-            <div>
-              <Image src="/img/sunfish0.jpg" />
-            </div>
+            {nftItems?.map((nft) => (
+              <div>
+                <Card shadow="sm" p="md" withBorder>
+                  <Card.Section>
+                    <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
+                  </Card.Section>
+                </Card>
+              </div>
+            ))}
           </SimpleGrid>
         </Tabs.Panel>
 
