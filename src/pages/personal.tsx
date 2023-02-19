@@ -13,11 +13,9 @@ const Personal = (props: any) => {
         <title>Personal - manbow-frontend</title>
         <meta property="og:title" content="Personal - manbow-frontend" />
       </Head>
-      <Container>
-        <NavBar />
-        <Gallery />
-        <Footer />
-      </Container>
+      <NavBar />
+      <Gallery />
+      <Footer />
     </div>
   );
 };

@@ -7,12 +7,12 @@ import {
   useNetwork,
   useNetworkMismatch,
   useChainId,
+  ChainId,
 } from '@thirdweb-dev/react';
 import { useMutation } from '@tanstack/react-query';
-import { CHAIN_ID } from '../constants/network';
 
 const claimButton = () => {
-  const chainId = CHAIN_ID;
+  const chainId = ChainId.Goerli;
   const address = useAddress();
   const walletChainId = useChainId();
   const tokenId = 0;
