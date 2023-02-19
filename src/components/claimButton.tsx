@@ -76,8 +76,8 @@ const claimButton = () => {
   const buttonText = (() => {
     if (willSwitchNetwork) {
       return 'Switch Network';
-    } else if (!contract || mutation.isLoading) {
-      return <Loader scale="sm" />;
+      // } else if (!contract || mutation.isLoading) {
+      //   return <Loader scale="sm" />;
     } else {
       return 'Buy';
     }
@@ -101,8 +101,8 @@ const claimButton = () => {
       <Button
         variant="gradient"
         gradient={{ from: 'indigo', to: 'cyan' }}
-        isLoading={mutation.isLoading || !contract}
         onClick={() => mutation.mutate()}
+        loading={mutation.isLoading || !contract}
       >
         {buttonText}
       </Button>
