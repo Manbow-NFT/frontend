@@ -1,19 +1,16 @@
 import React from 'react';
 import { Box, Card, Image, SimpleGrid, Tabs } from '@mantine/core';
 import { useAddress, useContract, useOwnedNFTs } from '@thirdweb-dev/react';
+import { CONTRACT_ADDRESS } from '../constants/constants';
 
 interface nftItem {
   tokenId: number;
 }
 
 const Gallery = () => {
-  const { contract } = useContract(
-    '0xE4B86B6f3eb2E660b0799c04Ce300419Fa859036',
-    'edition-drop'
-  );
+  const { contract } = useContract(CONTRACT_ADDRESS, 'edition-drop');
   const address = useAddress();
   const { data: ownedNFTs } = useOwnedNFTs(contract, address);
-  console.log(ownedNFTs);
   const nftItems: nftItem[] = [];
   ownedNFTs?.map((ownedNft, idx) => {
     if (ownedNft.quantityOwned != null) {

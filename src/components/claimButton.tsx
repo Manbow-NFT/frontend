@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Button, Text, Flex, Loader, NumberInput } from '@mantine/core';
+import { Button, Text, Flex, NumberInput } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import {
   useContract,
@@ -7,24 +7,22 @@ import {
   useNetwork,
   useNetworkMismatch,
   useChainId,
-  ChainId,
 } from '@thirdweb-dev/react';
 import { useMutation } from '@tanstack/react-query';
+import { CHAIN_ID, CONTRACT_ADDRESS } from '../constants/constants';
 
 const claimButton = () => {
-  const chainId = ChainId.Goerli;
+  const { contract } = useContract(CONTRACT_ADDRESS, 'edition-drop');
   const address = useAddress();
   const walletChainId = useChainId();
   const tokenId = 0;
   const [quantity, setQuantity] = useState(1);
   const [, switchNetwork] = useNetwork();
   const hasMismatch = useNetworkMismatch();
-  const contractAddress = '0xE4B86B6f3eb2E660b0799c04Ce300419Fa859036';
-  const { contract } = useContract(contractAddress, 'edition-drop');
 
   const switchToChainId = useMemo(() => {
-    if (walletChainId && chainId !== walletChainId) {
-      return chainId;
+    if (walletChainId && CHAIN_ID !== walletChainId) {
+      return CHAIN_ID;
     }
     return null;
   }, [walletChainId]);
