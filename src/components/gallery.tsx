@@ -60,11 +60,51 @@ const Gallery = () => {
         </Tabs.Panel>
 
         <Tabs.Panel value="messages" pt="xs">
-          Messages tab content
+          <SimpleGrid
+            cols={10}
+            breakpoints={[
+              { maxWidth: 'lg', cols: 8 },
+              { maxWidth: 'md', cols: 6 },
+              { maxWidth: 'sm', cols: 5 },
+              { maxWidth: 'xs', cols: 4 },
+            ]}
+          >
+            {nftItems
+              ?.filter((nft) => nft.tokenId % 2 == 0)
+              .map((nft) => (
+                <div>
+                  <Card shadow="sm" p="md" withBorder>
+                    <Card.Section>
+                      <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
+                    </Card.Section>
+                  </Card>
+                </div>
+              ))}
+          </SimpleGrid>
         </Tabs.Panel>
 
         <Tabs.Panel value="settings" pt="xs">
-          Settings tab content
+          <SimpleGrid
+            cols={10}
+            breakpoints={[
+              { maxWidth: 'lg', cols: 8 },
+              { maxWidth: 'md', cols: 6 },
+              { maxWidth: 'sm', cols: 5 },
+              { maxWidth: 'xs', cols: 4 },
+            ]}
+          >
+            {nftItems
+              ?.filter((nft) => nft.tokenId % 2 == 1)
+              .map((nft) => (
+                <div>
+                  <Card shadow="sm" p="md" withBorder>
+                    <Card.Section>
+                      <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
+                    </Card.Section>
+                  </Card>
+                </div>
+              ))}
+          </SimpleGrid>
         </Tabs.Panel>
       </Tabs>
     </Box>
