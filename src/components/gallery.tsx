@@ -1,9 +1,14 @@
 import React from 'react';
-import { Tabs } from '@mantine/core';
+import { Box, Image, SimpleGrid, Tabs } from '@mantine/core';
 
 const Gallery = () => {
   return (
-    <>
+    <Box
+      sx={{
+        paddingInline: 20,
+        paddingBlock: 10,
+      }}
+    >
       <Tabs defaultValue="gallery">
         <Tabs.List>
           <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
@@ -12,7 +17,82 @@ const Gallery = () => {
         </Tabs.List>
 
         <Tabs.Panel value="gallery" pt="xs">
-          Gallery tab content
+          <SimpleGrid
+            cols={10}
+            breakpoints={[
+              { maxWidth: 'lg', cols: 8 },
+              { maxWidth: 'md', cols: 6 },
+              { maxWidth: 'sm', cols: 5 },
+              { maxWidth: 'xs', cols: 4 },
+            ]}
+          >
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+            <div>
+              <Image src="/img/sunfish0.jpg" />
+            </div>
+          </SimpleGrid>
         </Tabs.Panel>
 
         <Tabs.Panel value="messages" pt="xs">
@@ -23,7 +103,7 @@ const Gallery = () => {
           Settings tab content
         </Tabs.Panel>
       </Tabs>
-    </>
+    </Box>
   );
 };
 
