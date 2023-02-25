@@ -149,7 +149,7 @@ export default function NavBar() {
             </Paper>
           )}
         </Transition>
-        <ConnectWallet />
+        <ConnectWallet accentColor="black" />
       </Container>
     </Header>
   );

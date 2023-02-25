@@ -4,6 +4,7 @@ import { ThirdwebProvider } from '@thirdweb-dev/react';
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CHAIN_ID } from '../constants/constants';
+import '../styles/style.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
