@@ -1,4 +1,4 @@
 import { ChainId } from '@thirdweb-dev/sdk';
 
 export const CHAIN_ID = ChainId.Mumbai;
-export const CONTRACT_ADDRESS = '0x0788eaf81E68086628474994dEA89b12c3F7d946';
+export const CONTRACT_ADDRESS = '0xB57032ea27AAE00b4f5168CB68D6b6e84313532f';

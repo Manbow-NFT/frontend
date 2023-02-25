@@ -29,9 +29,9 @@ const Gallery = () => {
     >
       <Tabs defaultValue="gallery">
         <Tabs.List>
-          <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
-          <Tabs.Tab value="messages">Messages</Tabs.Tab>
-          <Tabs.Tab value="settings">Settings</Tabs.Tab>
+          <Tabs.Tab value="gallery">All</Tabs.Tab>
+          <Tabs.Tab value="messages">Alive</Tabs.Tab>
+          <Tabs.Tab value="settings">Dead</Tabs.Tab>
         </Tabs.List>
 
         <Tabs.Panel value="gallery" pt="xs">
