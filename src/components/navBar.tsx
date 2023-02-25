@@ -7,6 +7,8 @@ import {
   Burger,
   Paper,
   Transition,
+  Flex,
+  Button,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { ConnectWallet } from '@thirdweb-dev/react';
@@ -30,25 +32,6 @@ const useStyles = createStyles((theme) => ({
     borderTopWidth: 0,
     overflow: 'hidden',
 
-    [theme.fn.largerThan('sm')]: {
-      display: 'none',
-    },
-  },
-
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: '100%',
-  },
-
-  links: {
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none',
-    },
-  },
-
-  burger: {
     [theme.fn.largerThan('sm')]: {
       display: 'none',
     },
@@ -108,48 +91,33 @@ export default function NavBar() {
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <a
+    <Button
       key={link.label}
+      component="a"
+      target="_blank"
+      variant="subtle"
       href={link.link}
-      className={cx(classes.link, {
-        [classes.linkActive]: active === link.link,
-      })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-        close();
-      }}
     >
       {link.label}
-    </a>
+    </Button>
   ));
 
   return (
-    <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
-      <Container className={classes.header}>
-        <img
-          src="https://presentation-website-assets.teleporthq.io/logos/logo.png"
-          height={28}
-        />
-        <Group spacing={5} className={classes.links}>
-          {items}
-        </Group>
-
-        <Burger
-          opened={opened}
-          onClick={toggle}
-          className={classes.burger}
-          size="sm"
-        />
-
-        <Transition transition="pop-top-right" duration={200} mounted={opened}>
-          {(styles) => (
-            <Paper className={classes.dropdown} withBorder style={styles}>
-              {items}
-            </Paper>
-          )}
-        </Transition>
-        <ConnectWallet accentColor="black" />
+    <Header height={HEADER_HEIGHT} mb={20} pt={5} className="z-10">
+      <Container>
+        <Flex
+          justify="space-between"
+          align="center"
+          direction="row"
+          wrap="nowrap"
+        >
+          <img
+            src="https://presentation-website-assets.teleporthq.io/logos/logo.png"
+            height={28}
+          />
+          <Group spacing={20}>{items}</Group>
+          <ConnectWallet accentColor="black" />
+        </Flex>
       </Container>
     </Header>
   );
