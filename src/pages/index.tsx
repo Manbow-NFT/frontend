@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 
 import NavBar from '../components/navBar';
-import Footer from '../components/footer';
 import { Container } from '@mantine/core';
 import ClaimButton from '../components/claimButton';
 
@@ -21,7 +20,6 @@ const Top: React.FC = () => {
       <Container size="md" px={10}>
         <ClaimButton />
       </Container>
-      <Footer />
     </div>
   );
 };
