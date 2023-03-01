@@ -3,7 +3,6 @@ import Head from 'next/head';
 
 import NavBar from '../components/navBar';
 import Gallery from '../components/gallery';
-import Footer from '../components/footer';
 
 const Personal = () => {
   return (
@@ -14,7 +13,6 @@ const Personal = () => {
       </Head>
       <NavBar />
       <Gallery />
-      <Footer />
     </div>
   );
 };

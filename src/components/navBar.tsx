@@ -1,79 +1,17 @@
-import { useState } from 'react';
+import { Header, Container, Group, Flex, Button } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
+import { useMutation } from '@tanstack/react-query';
 import {
-  createStyles,
-  Header,
-  Container,
-  Group,
-  Burger,
-  Paper,
-  Transition,
-  Flex,
-  Button,
-} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { ConnectWallet } from '@thirdweb-dev/react';
+  useChainId,
+  useMetamask,
+  useNetwork,
+  useNetworkMismatch,
+} from '@thirdweb-dev/react';
+import Link from 'next/link';
+import { useMemo, useState } from 'react';
+import { CHAIN_ID } from '../constants/constants';
 
 const HEADER_HEIGHT = 60;
-
-const useStyles = createStyles((theme) => ({
-  root: {
-    position: 'relative',
-    zIndex: 1,
-  },
-
-  dropdown: {
-    position: 'absolute',
-    top: HEADER_HEIGHT,
-    left: 0,
-    right: 0,
-    zIndex: 0,
-    borderTopRightRadius: 0,
-    borderTopLeftRadius: 0,
-    borderTopWidth: 0,
-    overflow: 'hidden',
-
-    [theme.fn.largerThan('sm')]: {
-      display: 'none',
-    },
-  },
-
-  link: {
-    display: 'block',
-    lineHeight: 1,
-    padding: '8px 12px',
-    borderRadius: theme.radius.sm,
-    textDecoration: 'none',
-    color:
-      theme.colorScheme === 'dark'
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
-
-    '&:hover': {
-      backgroundColor:
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
-    },
-
-    [theme.fn.smallerThan('sm')]: {
-      borderRadius: 0,
-      padding: theme.spacing.md,
-    },
-  },
-
-  linkActive: {
-    '&, &:hover': {
-      backgroundColor: theme.fn.variant({
-        variant: 'light',
-        color: theme.primaryColor,
-      }).background,
-      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
-        .color,
-    },
-  },
-}));
 
 export default function NavBar() {
   const links = [
@@ -86,9 +24,6 @@ export default function NavBar() {
       label: 'Etherscan',
     },
   ];
-  const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
-  const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
     <Button
@@ -101,6 +36,75 @@ export default function NavBar() {
       {link.label}
     </Button>
   ));
+
+  const [connecting, setConnecting] = useState(false);
+
+  const connectWithMetamask = useMetamask();
+  const walletChainId = useChainId();
+  const [, switchNetwork] = useNetwork();
+  const hasMismatch = useNetworkMismatch();
+
+  const switchToChainId = useMemo(() => {
+    if (walletChainId && CHAIN_ID !== walletChainId) {
+      return CHAIN_ID;
+    }
+    return null;
+  }, [walletChainId]);
+
+  const mutation = useMutation(
+    async () => {
+      if (switchToChainId) {
+        if (switchNetwork) {
+          await switchNetwork(switchToChainId);
+          return '__NETWORK_SWITCHED__';
+        } else {
+          throw new Error(
+            'need to switch chain but connected wallet does not support switching'
+          );
+        }
+      }
+      if (!connecting) {
+        await connectWithMetamask();
+        setConnecting(true);
+      }
+    },
+    {
+      // onSuccess: (res) => {
+      //   if (res == '__NETWORK_SWITCHED__') {
+      //     return;
+      //   }
+      //   showNotification({
+      //     title: 'Successfully bought!',
+      //     message: 'You successfully bought the NFT.',
+      //     color: 'blue',
+      //     autoClose: 5000,
+      //   });
+      // },
+      onError: (err) => {
+        console.log(err);
+        showNotification({
+          title: 'Failed to connect wallet',
+          message: 'you failed to connect wallet. Something went wrong.',
+          color: 'red',
+          autoClose: 9000,
+        });
+      },
+    }
+  );
+
+  const willSwitchNetwork = hasMismatch && !!switchNetwork;
+
+  const buttonText = (() => {
+    if (willSwitchNetwork) {
+      return 'Switch Network';
+      // } else if (!contract || mutation.isLoading) {
+      //   return <Loader scale="sm" />;
+    } else if (!connecting) {
+      return 'Connect Wallet';
+    } else {
+      return 'My Manbow';
+    }
+  })();
 
   return (
     <Header height={HEADER_HEIGHT} mb={20} pt={5} className="z-10">
@@ -116,7 +120,26 @@ export default function NavBar() {
             height={28}
           />
           <Group spacing={20}>{items}</Group>
-          <ConnectWallet accentColor="black" />
+          {connecting ? (
+            <Button
+              variant="gradient"
+              gradient={{ from: 'indigo', to: 'cyan' }}
+              onClick={() => mutation.mutate()}
+              loading={mutation.isLoading}
+            >
+              {buttonText}
+            </Button>
+          ) : (
+            <Link href="/personal">
+              <Button
+                variant="gradient"
+                gradient={{ from: 'indigo', to: 'cyan' }}
+                loading={mutation.isLoading}
+              >
+                My Manbow
+              </Button>
+            </Link>
+          )}
         </Flex>
       </Container>
     </Header>
