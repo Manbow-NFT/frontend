@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDisclosure } from '@mantine/hooks';
 import {
   Box,
   Text,
@@ -8,6 +9,9 @@ import {
   Tabs,
   Flex,
   Button,
+  Modal,
+  NumberInput,
+  Center,
 } from '@mantine/core';
 import { useAddress, useContract, useOwnedNFTs } from '@thirdweb-dev/react';
 import { CONTRACT_ADDRESS } from '../constants/constants';
@@ -21,6 +25,8 @@ const Gallery = () => {
   const { contract } = useContract(CONTRACT_ADDRESS, 'edition-drop');
   const address = useAddress();
   const { data: nfts } = useOwnedNFTs(contract, address);
+  const [opened, { open, close }] = useDisclosure(false);
+
   const nftItems: nftItem[] = [];
   nfts?.map((ownedNft, idx) => {
     if (ownedNft.quantityOwned != null) {
@@ -33,111 +39,137 @@ const Gallery = () => {
   const nftDeadItems = nftItems?.filter((nft) => nft.tokenId % 2 == 1);
 
   return (
-    <Box
-      sx={{
-        paddingInline: 20,
-        paddingBlock: 10,
-      }}
-    >
-      <Flex direction="row" justify="flex-end">
-        <Button
-          variant="gradient"
-          gradient={{ from: 'indigo', to: 'cyan' }}
-          onClick={() => console.log('popup')}
-        >
-          Merge
-        </Button>
-      </Flex>
-      <Tabs defaultValue="all" variant="pills">
-        <Tabs.List>
-          <Tabs.Tab
-            value="all"
-            rightSection={<Text fz="sm">{nftItems?.length || 0}</Text>}
-          >
-            All
-          </Tabs.Tab>
-          <Tabs.Tab
-            value="alive"
-            rightSection={<Text fz="sm">{nftAliveItems?.length || 0}</Text>}
-          >
-            Alive
-          </Tabs.Tab>
-          <Tabs.Tab
-            value="dead"
-            disabled={!nftDeadItems}
-            rightSection={<Text fz="sm">{nftDeadItems?.length || 0}</Text>}
-          >
-            Dead
-          </Tabs.Tab>
-        </Tabs.List>
+    <>
+      <Modal opened={opened} onClose={close} title="Merge Manbows">
+        <Tabs variant="outline" defaultValue="Normal">
+          <Tabs.List>
+            <Tabs.Tab value="Normal">Normal</Tabs.Tab>
+          </Tabs.List>
 
-        <Tabs.Panel value="all" pt="xs">
-          <SimpleGrid
-            cols={10}
-            breakpoints={[
-              { maxWidth: 'lg', cols: 8 },
-              { maxWidth: 'md', cols: 6 },
-              { maxWidth: 'sm', cols: 5 },
-              { maxWidth: 'xs', cols: 4 },
-            ]}
+          <Tabs.Panel value="Normal">
+            <Flex direction="row" justify="center" gap="md">
+              <Card>
+                <Image src={`/img/sunfish0.jpg`} height={100} width={100} />
+                <NumberInput mt={20} size="sm" defaultValue={0} min={0} />
+              </Card>
+              <Card>
+                <Image src={`/img/sunfish0.jpg`} height={100} width={100} />
+                <NumberInput mt={20} size="sm" defaultValue={0} min={0} />
+              </Card>
+            </Flex>
+            <Flex direction="row" justify="space-between" gap="md">
+              <Text>You own: {nftAliveItems.length}</Text>
+              <Button mr={40}>Merge</Button>
+            </Flex>
+          </Tabs.Panel>
+        </Tabs>
+      </Modal>
+      <Box
+        sx={{
+          paddingInline: 20,
+          paddingBlock: 10,
+        }}
+      >
+        <Flex direction="row" justify="flex-end">
+          <Button
+            variant="gradient"
+            gradient={{ from: 'indigo', to: 'cyan' }}
+            onClick={open}
           >
-            {nftItems?.map((nft) => (
-              <div>
-                <Card shadow="sm" p="md" withBorder key={nft.tokenId}>
-                  <Card.Section>
-                    <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
-                  </Card.Section>
-                </Card>
-              </div>
-            ))}
-          </SimpleGrid>
-        </Tabs.Panel>
+            Merge
+          </Button>
+        </Flex>
+        <Tabs defaultValue="all" variant="pills">
+          <Tabs.List>
+            <Tabs.Tab
+              value="all"
+              rightSection={<Text fz="sm">{nftItems?.length || 0}</Text>}
+            >
+              All
+            </Tabs.Tab>
+            <Tabs.Tab
+              value="alive"
+              rightSection={<Text fz="sm">{nftAliveItems?.length || 0}</Text>}
+            >
+              Alive
+            </Tabs.Tab>
+            <Tabs.Tab
+              value="dead"
+              disabled={!nftDeadItems}
+              rightSection={<Text fz="sm">{nftDeadItems?.length || 0}</Text>}
+            >
+              Dead
+            </Tabs.Tab>
+          </Tabs.List>
 
-        <Tabs.Panel value="alive" pt="xs">
-          <SimpleGrid
-            cols={10}
-            breakpoints={[
-              { maxWidth: 'lg', cols: 8 },
-              { maxWidth: 'md', cols: 6 },
-              { maxWidth: 'sm', cols: 5 },
-              { maxWidth: 'xs', cols: 4 },
-            ]}
-          >
-            {nftAliveItems.map((nft) => (
-              <div>
-                <Card shadow="sm" p="md" withBorder key={nft.id}>
-                  <Card.Section>
-                    <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
-                  </Card.Section>
-                </Card>
-              </div>
-            ))}
-          </SimpleGrid>
-        </Tabs.Panel>
+          <Tabs.Panel value="all" pt="xs">
+            <SimpleGrid
+              cols={10}
+              breakpoints={[
+                { maxWidth: 'lg', cols: 8 },
+                { maxWidth: 'md', cols: 6 },
+                { maxWidth: 'sm', cols: 5 },
+                { maxWidth: 'xs', cols: 4 },
+              ]}
+            >
+              {nftItems?.map((nft) => (
+                <div>
+                  <Card shadow="sm" p="md" withBorder key={nft.tokenId}>
+                    <Card.Section>
+                      <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
+                    </Card.Section>
+                  </Card>
+                </div>
+              ))}
+            </SimpleGrid>
+          </Tabs.Panel>
 
-        <Tabs.Panel value="dead" pt="xs">
-          <SimpleGrid
-            cols={10}
-            breakpoints={[
-              { maxWidth: 'lg', cols: 8 },
-              { maxWidth: 'md', cols: 6 },
-              { maxWidth: 'sm', cols: 5 },
-              { maxWidth: 'xs', cols: 4 },
-            ]}
-          >
-            {nftDeadItems.map((nft) => (
-              <div>
-                <Card shadow="sm" p="md" withBorder>
-                  <Card.Section>
-                    <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
-                  </Card.Section>
-                </Card>
-              </div>
-            ))}
-          </SimpleGrid>
-        </Tabs.Panel>
-      </Tabs>
-    </Box>
+          <Tabs.Panel value="alive" pt="xs">
+            <SimpleGrid
+              cols={10}
+              breakpoints={[
+                { maxWidth: 'lg', cols: 8 },
+                { maxWidth: 'md', cols: 6 },
+                { maxWidth: 'sm', cols: 5 },
+                { maxWidth: 'xs', cols: 4 },
+              ]}
+            >
+              {nftAliveItems.map((nft) => (
+                <div>
+                  <Card shadow="sm" p="md" withBorder key={nft.id}>
+                    <Card.Section>
+                      <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
+                    </Card.Section>
+                  </Card>
+                </div>
+              ))}
+            </SimpleGrid>
+          </Tabs.Panel>
+
+          <Tabs.Panel value="dead" pt="xs">
+            <SimpleGrid
+              cols={10}
+              breakpoints={[
+                { maxWidth: 'lg', cols: 8 },
+                { maxWidth: 'md', cols: 6 },
+                { maxWidth: 'sm', cols: 5 },
+                { maxWidth: 'xs', cols: 4 },
+              ]}
+            >
+              {nftDeadItems.map((nft) => (
+                <div>
+                  <Card shadow="sm" p="md" withBorder>
+                    <Card.Section>
+                      <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
+                    </Card.Section>
+                  </Card>
+                </div>
+              ))}
+            </SimpleGrid>
+          </Tabs.Panel>
+        </Tabs>
+      </Box>
+    </>
   );
 };
 
