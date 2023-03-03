@@ -74,8 +74,6 @@ const claimButton = () => {
   const buttonText = (() => {
     if (willSwitchNetwork) {
       return 'Switch Network';
-      // } else if (!contract || mutation.isLoading) {
-      //   return <Loader scale="sm" />;
     } else {
       return 'Buy';
     }

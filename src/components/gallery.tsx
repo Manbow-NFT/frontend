@@ -1,5 +1,14 @@
 import React from 'react';
-import { Box, Text, Card, Image, SimpleGrid, Tabs, Badge } from '@mantine/core';
+import {
+  Box,
+  Text,
+  Card,
+  Image,
+  SimpleGrid,
+  Tabs,
+  Flex,
+  Button,
+} from '@mantine/core';
 import { useAddress, useContract, useOwnedNFTs } from '@thirdweb-dev/react';
 import { CONTRACT_ADDRESS } from '../constants/constants';
 
@@ -30,6 +39,15 @@ const Gallery = () => {
         paddingBlock: 10,
       }}
     >
+      <Flex direction="row" justify="flex-end">
+        <Button
+          variant="gradient"
+          gradient={{ from: 'indigo', to: 'cyan' }}
+          onClick={() => console.log('popup')}
+        >
+          Merge
+        </Button>
+      </Flex>
       <Tabs defaultValue="all" variant="pills">
         <Tabs.List>
           <Tabs.Tab
