@@ -4,6 +4,7 @@ import { useAddress, useContract, useOwnedNFTs } from '@thirdweb-dev/react';
 import { CONTRACT_ADDRESS } from '../constants/constants';
 
 interface nftItem {
+  id: number;
   tokenId: number;
 }
 
@@ -15,7 +16,7 @@ const Gallery = () => {
   nfts?.map((ownedNft, idx) => {
     if (ownedNft.quantityOwned != null) {
       for (let i = 0; i < ownedNft.quantityOwned; i++) {
-        nftItems.push({ tokenId: idx });
+        nftItems.push({ id: i, tokenId: idx });
       }
     }
   });
@@ -64,7 +65,7 @@ const Gallery = () => {
           >
             {nftItems?.map((nft) => (
               <div>
-                <Card shadow="sm" p="md" withBorder>
+                <Card shadow="sm" p="md" withBorder key={nft.tokenId}>
                   <Card.Section>
                     <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
                   </Card.Section>
@@ -86,7 +87,7 @@ const Gallery = () => {
           >
             {nftAliveItems.map((nft) => (
               <div>
-                <Card shadow="sm" p="md" withBorder>
+                <Card shadow="sm" p="md" withBorder key={nft.id}>
                   <Card.Section>
                     <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
                   </Card.Section>

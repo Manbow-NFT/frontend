@@ -2,6 +2,7 @@ import { Header, Container, Group, Flex, Button } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { useMutation } from '@tanstack/react-query';
 import {
+  useAddress,
   useChainId,
   useMetamask,
   useNetwork,
@@ -37,7 +38,8 @@ export default function NavBar() {
     </Button>
   ));
 
-  const [connecting, setConnecting] = useState(false);
+  // const [connecting, setConnecting] = useState(false);
+  const address = useAddress();
 
   const connectWithMetamask = useMetamask();
   const walletChainId = useChainId();
@@ -63,23 +65,11 @@ export default function NavBar() {
           );
         }
       }
-      if (!connecting) {
+      if (!address) {
         await connectWithMetamask();
-        setConnecting(true);
       }
     },
     {
-      // onSuccess: (res) => {
-      //   if (res == '__NETWORK_SWITCHED__') {
-      //     return;
-      //   }
-      //   showNotification({
-      //     title: 'Successfully bought!',
-      //     message: 'You successfully bought the NFT.',
-      //     color: 'blue',
-      //     autoClose: 5000,
-      //   });
-      // },
       onError: (err) => {
         console.log(err);
         showNotification({
@@ -97,9 +87,8 @@ export default function NavBar() {
   const buttonText = (() => {
     if (willSwitchNetwork) {
       return 'Switch Network';
-      // } else if (!contract || mutation.isLoading) {
-      //   return <Loader scale="sm" />;
-    } else if (!connecting) {
+    }
+    if (!address) {
       return 'Connect Wallet';
     } else {
       return 'My Manbow';
@@ -120,7 +109,7 @@ export default function NavBar() {
             height={28}
           />
           <Group spacing={20}>{items}</Group>
-          {connecting ? (
+          {!address ? (
             <Button
               variant="gradient"
               gradient={{ from: 'indigo', to: 'cyan' }}
