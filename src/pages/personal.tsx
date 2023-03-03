@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 
-import NavBar from '../components/navBar';
-import Gallery from '../components/gallery';
+import NavBar from '../components/NavBar';
+import Gallery from '../components/Gallery';
 
 const Personal = () => {
   return (

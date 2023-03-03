@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 
-import NavBar from '../components/navBar';
+import NavBar from '../components/NavBar';
 import { Container } from '@mantine/core';
-import ClaimButton from '../components/claimButton';
+import ClaimButton from '../components/ClaimButton';
 
 const Top: React.FC = () => {
   return (

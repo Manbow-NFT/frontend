@@ -9,7 +9,7 @@ import {
   useNetworkMismatch,
 } from '@thirdweb-dev/react';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { CHAIN_ID } from '../constants/constants';
 
 const HEADER_HEIGHT = 60;
@@ -104,10 +104,12 @@ export default function NavBar() {
           direction="row"
           wrap="nowrap"
         >
-          <img
-            src="https://presentation-website-assets.teleporthq.io/logos/logo.png"
-            height={28}
-          />
+          <Link href="/">
+            <img
+              src="https://presentation-website-assets.teleporthq.io/logos/logo.png"
+              height={28}
+            />
+          </Link>
           <Group spacing={20}>{items}</Group>
           {!address ? (
             <Button

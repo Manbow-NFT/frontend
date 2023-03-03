@@ -9,12 +9,10 @@ import {
   Tabs,
   Flex,
   Button,
-  Modal,
-  NumberInput,
-  Center,
 } from '@mantine/core';
 import { useAddress, useContract, useOwnedNFTs } from '@thirdweb-dev/react';
 import { CONTRACT_ADDRESS } from '../constants/constants';
+import MergeModal from './MergeModal';
 
 interface nftItem {
   id: number;
@@ -40,30 +38,7 @@ const Gallery = () => {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Merge Manbows">
-        <Tabs variant="outline" defaultValue="Normal">
-          <Tabs.List>
-            <Tabs.Tab value="Normal">Normal</Tabs.Tab>
-          </Tabs.List>
-
-          <Tabs.Panel value="Normal">
-            <Flex direction="row" justify="center" gap="md">
-              <Card>
-                <Image src={`/img/sunfish0.jpg`} height={100} width={100} />
-                <NumberInput mt={20} size="sm" defaultValue={0} min={0} />
-              </Card>
-              <Card>
-                <Image src={`/img/sunfish0.jpg`} height={100} width={100} />
-                <NumberInput mt={20} size="sm" defaultValue={0} min={0} />
-              </Card>
-            </Flex>
-            <Flex direction="row" justify="space-between" gap="md">
-              <Text>You own: {nftAliveItems.length}</Text>
-              <Button mr={40}>Merge</Button>
-            </Flex>
-          </Tabs.Panel>
-        </Tabs>
-      </Modal>
+      <MergeModal opened={opened} close={close} />
       <Box
         sx={{
           paddingInline: 20,
@@ -75,6 +50,10 @@ const Gallery = () => {
             variant="gradient"
             gradient={{ from: 'indigo', to: 'cyan' }}
             onClick={open}
+            mr={50}
+            w={130}
+            h={45}
+            fz="xl"
           >
             Merge
           </Button>
