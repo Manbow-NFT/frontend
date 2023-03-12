@@ -11,7 +11,7 @@ import {
 import { useMutation } from '@tanstack/react-query';
 import { CHAIN_ID, CONTRACT_ADDRESS } from '../constants/constants';
 
-const claimButton = () => {
+const ClaimButton = () => {
   const { contract } = useContract(CONTRACT_ADDRESS, 'edition-drop');
   const address = useAddress();
   const walletChainId = useChainId();
@@ -48,7 +48,7 @@ const claimButton = () => {
         }
         showNotification({
           title: 'Successfully bought!',
-          message: 'You successfully bought the NFT.',
+          message: 'You successfully bought the Manbow NFT.',
           color: 'blue',
           autoClose: 5000,
         });
@@ -106,4 +106,4 @@ const claimButton = () => {
   );
 };
 
-export default claimButton;
+export default ClaimButton;

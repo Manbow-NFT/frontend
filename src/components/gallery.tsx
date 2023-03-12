@@ -93,7 +93,7 @@ const Gallery = () => {
             >
               {nftItems?.map((nft) => (
                 <div>
-                  <Card shadow="sm" p="md" withBorder key={nft.tokenId}>
+                  <Card shadow="sm" p="md" withBorder key={nft.id}>
                     <Card.Section>
                       <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
                     </Card.Section>
@@ -137,7 +137,7 @@ const Gallery = () => {
             >
               {nftDeadItems.map((nft) => (
                 <div>
-                  <Card shadow="sm" p="md" withBorder>
+                  <Card shadow="sm" p="md" withBorder key={nft.id}>
                     <Card.Section>
                       <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
                     </Card.Section>
