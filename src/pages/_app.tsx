@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     >
       <NotificationsProvider position="bottom-center">
         <QueryClientProvider client={queryClient}>
-          <ThirdwebProvider desiredChainId={CHAIN_ID}>
+          <ThirdwebProvider activeChain={CHAIN_ID}>
             <Component {...pageProps} />
           </ThirdwebProvider>
         </QueryClientProvider>
