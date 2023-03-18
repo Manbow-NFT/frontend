@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import {
   Box,
@@ -28,7 +27,7 @@ const Gallery = () => {
   const nftItems: nftItem[] = [];
   nfts?.map((ownedNft, idx) => {
     if (ownedNft.quantityOwned != null) {
-      for (let i = 0; i < ownedNft.quantityOwned; i++) {
+      for (let i = 0; i < Number(ownedNft.quantityOwned); i++) {
         nftItems.push({ id: i, tokenId: idx });
       }
     }
@@ -92,8 +91,8 @@ const Gallery = () => {
               ]}
             >
               {nftItems?.map((nft) => (
-                <div>
-                  <Card shadow="sm" p="md" withBorder key={nft.id}>
+                <div key={nft.id}>
+                  <Card shadow="sm" p="md" withBorder>
                     <Card.Section>
                       <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
                     </Card.Section>
@@ -114,8 +113,8 @@ const Gallery = () => {
               ]}
             >
               {nftAliveItems.map((nft) => (
-                <div>
-                  <Card shadow="sm" p="md" withBorder key={nft.id}>
+                <div key={nft.id}>
+                  <Card shadow="sm" p="md" withBorder>
                     <Card.Section>
                       <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
                     </Card.Section>
@@ -136,8 +135,8 @@ const Gallery = () => {
               ]}
             >
               {nftDeadItems.map((nft) => (
-                <div>
-                  <Card shadow="sm" p="md" withBorder key={nft.id}>
+                <div key={nft.id}>
+                  <Card shadow="sm" p="md" withBorder>
                     <Card.Section>
                       <Image src={`/img/sunfish${nft.tokenId}.jpg`} />
                     </Card.Section>

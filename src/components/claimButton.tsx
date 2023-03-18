@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Button, Text, Flex, NumberInput } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import {
@@ -39,7 +39,7 @@ const ClaimButton = () => {
           );
         }
       }
-      await contract?.claim(tokenId, quantity);
+      await contract?.erc1155.claimTo(address || '', tokenId, quantity);
     },
     {
       onSuccess: (res) => {
