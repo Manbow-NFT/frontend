@@ -10,7 +10,12 @@ import {
   Center,
   Container,
 } from '@mantine/core';
-import { useAddress, useContract, useOwnedNFTs } from '@thirdweb-dev/react';
+import {
+  useAddress,
+  useContract,
+  useContractWrite,
+  useOwnedNFTs,
+} from '@thirdweb-dev/react';
 import { useEffect, useState } from 'react';
 import { CONTRACT_ADDRESS } from '../constants/constants';
 import { useMutation } from '@tanstack/react-query';
@@ -27,13 +32,13 @@ const MergeModal = (props: Props) => {
   const { contract } = useContract(CONTRACT_ADDRESS, 'edition-drop');
   const address = useAddress();
   const { data: nfts } = useOwnedNFTs(contract, address);
+  const { mutateAsync: merge } = useContractWrite(contract, 'merge');
   const mutation = useMutation(
     async () => {
       if (!contract || !address) {
         throw new Error('something went wrong');
       }
-      await contract.burnTokens(0, normalForSilver);
-      await contract.claimTo(address, 2, silverForNormal);
+      await merge([address, 0, 2, silverForNormal]);
     },
     {
       onSuccess: (res) => {
@@ -59,7 +64,7 @@ const MergeModal = (props: Props) => {
   const [normalForSilver, setNormalForSilver] = useState(0);
   const [silverForNormal, setSilverForNormal] = useState(0);
   const initialNormalForSilver =
-    nfts?.find((nft) => nft.metadata.id == '0')?.quantityOwned || 0;
+    Number(nfts?.find((nft) => nft.metadata.id == '0')?.quantityOwned) || 0;
 
   useEffect(() => {
     setNormalForSilver(

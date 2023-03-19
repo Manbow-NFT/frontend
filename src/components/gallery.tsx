@@ -25,10 +25,10 @@ const Gallery = () => {
   const [opened, { open, close }] = useDisclosure(false);
 
   const nftItems: nftItem[] = [];
-  nfts?.map((ownedNft, idx) => {
+  nfts?.map((ownedNft) => {
     if (ownedNft.quantityOwned != null) {
       for (let i = 0; i < Number(ownedNft.quantityOwned); i++) {
-        nftItems.push({ id: i, tokenId: idx });
+        nftItems.push({ id: i, tokenId: Number(ownedNft.metadata.id) });
       }
     }
   });
