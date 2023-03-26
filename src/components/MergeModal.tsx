@@ -85,7 +85,6 @@ const MergeModal = (props: Props) => {
               <Image src={`/img/sunfish0.jpg`} height={100} width={100} />
               <Text mt="md">{normalForSilver}</Text>
             </Container>
-            <Text>{'→'}</Text>
             <Container size="sm" m="sm" p="sm">
               <Image src={`/img/sunfish2.jpg`} height={100} width={100} />
               <NumberInput
@@ -94,7 +93,7 @@ const MergeModal = (props: Props) => {
                 defaultValue={0}
                 min={0}
                 value={silverForNormal}
-                max={Math.floor(normalForSilver / NORMAL_TO_SILVER)}
+                max={Math.floor(initialNormalForSilver / NORMAL_TO_SILVER)}
                 onChange={(val) => {
                   setSilverForNormal(val || 0);
                 }}
